@@ -11,18 +11,19 @@ This repository contains the code, data, and documents associated with our respo
 To replicate our analysis or explore the data and findings:
 
 1. **Clone this repository** to your local machine using Git.
-2. **Navigate to the `src` directory** to find the R script (`jaci_gpt.R.txt`) used for querying PubMed, analyzing abstracts, and generating summaries.
+2. **Navigate to the `src` directory** to find the R script (`jaci_gpt.R`) used for querying PubMed, analyzing abstracts, and generating summaries.
+3. **Replace your terms** Example: `terms <- c("cefazolin", "penicillin", "allergy")`
 3. **Data and Figures**: The `data` folder contains all the extracted data (`text_output`) and generated figures. Explore these to understand the analysis basis.
 4. **Documentations and Paper**: Access the initial submission (`JACI-S-23-01178.pdf`), our reply to Dages et al. (`2023_Lawless_jaci_Reply_to_Dages_et_al-You_AIn’t_using_it_right-artificial_intelligence_progress_in_allergy.pdf`), and preprint materials in the `jaci_gpt_preprint_version` folder.
 
 ## Requirements
 
 - R programming environment
-- Required R packages as specified in the `jaci_gpt.R.txt` script comments
+- Required R packages as specified in the `jaci_gpt.R` script comments
 
 ## Usage
 
-Follow the instructions within the `jaci_gpt.R.txt` script to set up your environment, install necessary packages, and run the analyses.
+Follow the instructions within the `jaci_gpt.R` script to set up your environment, install necessary packages, and run the analyses.
 
 ## Contributing
 
