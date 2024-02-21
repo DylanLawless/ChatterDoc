@@ -69,14 +69,13 @@ word_counts %>%
   coord_flip() +
   labs(x = "Word",
        y = "Frequency",
-       title = "Most Common Words in Abstracts Related to Cefazolin and Penicillin Allergy")
+       title = paste("Most common words in abstracts related to\n", paste(terms, collapse=", ")))
 
-# Define the terms of interest
-terms <- c("cefazolin", "penicillin", "allergy")
 
 # Make the plot, showing the most common words:
 title1 <-
-  "Most common words in \nabstracts related to cefazolin and penicillin allergy (quantile 0.95)"
+paste("Most common words in abstracts related to", paste(terms, collapse=" and "), "(quantile 0.95)")
+
 plot1 <- word_counts %>%
   mutate(TermOfInterest = ifelse(word %in% terms, "Yes", "No")) %>%
   filter(n > quantile(n, 0.95)) %>%  # Optional: Only show the most common words
@@ -129,7 +128,7 @@ tf_idf <- tokenized_abstracts %>%
 
 # plot
 title2 <-
-  "TF-IDF for terms of interest in \nabstracts related to cefazolin and penicillin allergy"
+  paste("TF-IDF for terms of interest in \nabstracts related to", paste(terms, collapse=", "))
 
 plot2 <- tf_idf %>%
   arrange(desc(tf_idf)) %>%
@@ -194,8 +193,10 @@ layout <- layout_with_fr(g)
 V(g)$high_degree <- degree(g) > quantile(degree(g), 0.98)
 
 # Plot
-title3 <-
-  "Network plot of edge weights based \non the frequency of co-occurrence in\nabstracts related to cefazolin and penicillin allergy (quantile  0.98)"
+title3 <- 
+  paste("Network plot of edge weights based \non the frequency of co-occurrence in\nabstracts related to", paste(terms, collapse=", "), "(quantile 0.98)")
+
+
 plot3 <- ggraph(g, layout = layout) +
   geom_edge_link(aes(edge_alpha = weight),
                  edge_width = 0.5,
@@ -234,7 +235,7 @@ co_occur_long <- co_occur_long %>% filter(value > threshold)
 
 # Plot
 title4 <-
-  "Heatmap of term co-occurrence in \nabstracts related to cefazolin and penicillin allergy (co-occurrence threshold >9)"
+paste("Heatmap of term co-occurrence in \nabstracts related to ", paste(terms, collapse=", "), "(co-occurrence threshold >",threshold, ")")
 
 plot4 <-
   ggplot(co_occur_long, aes(x = item1, y = item2, fill = value)) +
